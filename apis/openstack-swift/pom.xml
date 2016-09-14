@@ -17,7 +17,10 @@
     limitations under the License.
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.apache.jclouds</groupId>
@@ -25,9 +28,10 @@
     <version>1.9.2</version>
     <relativePath>../../project/pom.xml</relativePath>
   </parent>
-
+  
   <groupId>org.apache.jclouds.api</groupId>
   <artifactId>openstack-swift</artifactId>
+  <version>1.9.2-1</version>
   <name>jclouds openstack-swift api</name>
   <description>jclouds components to access an implementation of OpenStack Swift</description>
   <packaging>bundle</packaging>
@@ -44,37 +48,38 @@
     <jclouds.blobstore.httpstream.md5>e5de09672af9b386c30a311654d8541a</jclouds.blobstore.httpstream.md5>
     <jclouds.osgi.export>org.jclouds.openstack.swift.v1*;version="${project.version}"</jclouds.osgi.export>
     <jclouds.osgi.import>org.jclouds*;version="${project.version}",*</jclouds.osgi.import>
+    <jcloud.version>1.9.2</jcloud.version>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>org.apache.jclouds.api</groupId>
       <artifactId>openstack-keystone</artifactId>
-      <version>${project.version}</version>
+      <version>${jcloud.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.jclouds</groupId>
       <artifactId>jclouds-blobstore</artifactId>
-      <version>${project.version}</version>
+      <version>${jcloud.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.jclouds</groupId>
       <artifactId>jclouds-core</artifactId>
-      <version>${project.version}</version>
+      <version>${jcloud.version}</version>
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.jclouds.api</groupId>
       <artifactId>openstack-keystone</artifactId>
-      <version>${project.version}</version>
+      <version>${jcloud.version}</version>
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.jclouds</groupId>
       <artifactId>jclouds-blobstore</artifactId>
-      <version>${project.version}</version>
+      <version>${jcloud.version}</version>
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>
@@ -88,7 +93,7 @@
     <dependency>
       <groupId>org.apache.jclouds.driver</groupId>
       <artifactId>jclouds-slf4j</artifactId>
-      <version>${project.version}</version>
+      <version>${jcloud.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -142,5 +147,33 @@
       </build>
     </profile>
   </profiles>
+  
+  <repositories>
+    <repository>
+      <id>gael-third-party</id>
+      <name>GAEL third-party repository</name>
+      <url>http://repository.gael.fr:8081/nexus/content/repositories/thirdparty</url>
+      <releases>
+         <enabled>true</enabled>
+         <updatePolicy>always</updatePolicy>
+         <checksumPolicy>warn</checksumPolicy>
+      </releases>
+      <snapshots>
+         <enabled>false</enabled>
+      </snapshots>
+      <layout>default</layout>
+    </repository>
+  </repositories>
+  
+   <distributionManagement>
+    <repository>
+      <id>gael-third-party</id>
+      <name>GAEL third-party repository</name>
+      <url>http://repository.gael.fr:8081/nexus/content/repositories/thirdparty</url>
+    </repository>
+  </distributionManagement>
 
+  
+  
+  
 </project>
